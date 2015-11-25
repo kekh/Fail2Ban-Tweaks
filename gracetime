@@ -1,10 +1,13 @@
 #!/bin/sh
 
+# Is system recently booted ?
+# Is Fail2Ban startup time $n minutes fresh ?
+
 RECENT_TIME_MIN="6" # Default time (in minutes) to consider the last boot or Fail2Ban startup time as not recent
 
-F2B_STATUS_CMD="systemctl status fail2ban"
-#F2B_STATUS_CMD="systemctl status fail2ban.service"
+F2B_STATUS_CMD="systemctl status fail2ban" # System command showing Fail2Ban current events, depends on the OS version 
 #F2B_STATUS_CMD="service fail2ban status"
+#F2B_STATUS_CMD="systemctl status fail2ban.service"
 
 is_boot_recent() # AKA: is the Uptime greater than This $min grace startup period?
 {
